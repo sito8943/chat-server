@@ -1,6 +1,10 @@
 ## Chat-Server
 
-### Brings
+Servidor de chat muy sencillo
+
+### Bibliotecas
+
+#### Servidor
 
 - [cookie-parser@~1.4.4](https://www.npmjs.com/package/cookie-parser)
 - [cors@2.8.5](https://www.npmjs.com/package/cors)
@@ -11,7 +15,30 @@
 - [socket.io@4.4.0](https://www.npmjs.com/package/socket.io)
 - [uuid@8.3.2](https://www.npmjs.com/package/uuid)
 
-### Routes
+#### Cliente
+
+base62str@^1.0.9
+crypto-js@^4.1.1
+nanoid@^3.3.1
+node-sass@^7.0.1
+react@^17.0.2
+react-dom@^17.0.2
+react-scripts@5.0.0
+socket.io-client@^4.4.
+
+### Rutas
 
 - :3000/ Página de inicio
 - :3001/ Sala de chat
+
+### Funcionamiento
+
+#### Servidor
+
+- Al unirse un cliente este recibe un UUID único y carga todos los mensajes que se han enviado, todos los demás usuarios serán notificados de la llegada de un nuevo usuario
+- El usuario puede mandar mensajes estilo transmisión
+- Al desconectarse un cliente todos los demás serán notificados
+
+#### Cliente
+
+- Al conectarse el cliente este crea una llave pública con nanoId
