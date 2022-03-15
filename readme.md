@@ -9,4 +9,4 @@
 - "morgan": "~1.9.1",
 - "nodemon": "^2.0.15",
 - "socket.io": "4.4.0",
-- [https://www.npmjs.com/package/uuid]("uuid": "8.3.2")
+- [uuid@8.3.2](https://www.npmjs.com/package/uuid)
