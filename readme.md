@@ -17,14 +17,13 @@ Servidor de chat muy sencillo
 
 #### Cliente
 
-base62str@^1.0.9
-crypto-js@^4.1.1
-nanoid@^3.3.1
-node-sass@^7.0.1
-react@^17.0.2
-react-dom@^17.0.2
-react-scripts@5.0.0
-socket.io-client@^4.4.
+- [base62str@^1.0.9](https://www.npmjs.com/package/base62str)
+- [crypto-js@^4.1.1](https://www.npmjs.com/package/crypto-js)
+- [nanoid@^3.3.1](https://www.npmjs.com/package/nanoid)
+- [react@^17.0.2](https://www.npmjs.com/package/react)
+- [react-dom@^17.0.2](https://www.npmjs.com/package/react-dom)
+- [react-scripts@5.0.0](https://www.npmjs.com/package/react-scripts)
+- [socket.io-client@^4.4.1](https://www.npmjs.com/package/socket.io-client)
 
 ### Rutas
 
