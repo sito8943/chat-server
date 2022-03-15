@@ -13,4 +13,5 @@
 
 ### Routes
 
-/ => chat
+- :3000/ Página de inicio
+- :3001/ Sala de chat
