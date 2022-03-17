@@ -63,27 +63,32 @@ class Connection {
     this.userId = uuidv4();
     socket.on("getMessages", () => this.getMessages());
     socket.on("message", (value) => this.handleMessage(value));
-    socket.on("change:name", function (data, fn) {
-      if (userNames.claim(data.name)) {
-        const oldName = this.userName;
-        userNames.free(oldName);
-        this.userName = data.name;
-        console.log(
-          `Usuario ${this.userId} ha cambiado su nombre de ${oldName} a ${this.userName}`
-        );
-
-        this.socket.emit("change:name", {
-          oldName,
-          newName: this.userName,
-        });
-
-        fn(true);
-      } else fn(false);
-    });
+    socket.on("change:name", (data, fn) => this.changeName(data, fn));
     socket.on("disconnect", () => this.disconnect());
     socket.on("connect_error", (err) => {
       console.log(`connect_error due to ${err.message}`);
     });
+  }
+
+  changeName(data, fn) {
+    if (userNames.claim(data.name)) {
+      const oldName = this.userName;
+      userNames.free(oldName);
+      this.userName = data.name;
+      console.log(
+        `Usuario ${this.userId} ha cambiado su nombre de ${oldName} a ${this.userName}`
+      );
+
+      this.socket.emit("change:name", {
+        oldName,
+        newName: this.userName,
+      });
+      this.socket.emit("message", {
+        value: `El usuario ${oldName} ha cambiado su nombre a ${data.name}`,
+        time: new Date().getTime(),
+      });
+      fn(true);
+    } else fn(false);
   }
 
   sendMessage(message) {
