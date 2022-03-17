@@ -41,3 +41,5 @@ Servidor de chat muy sencillo
 #### Cliente
 
 - Al conectarse el cliente este crea una llave pública con nanoId
+- Al enviar un mensaje el cliente encripta el mensaje con AES usando la llave pública y lo envía con llave pública encriptada con base62
+- Al recibir un mensaje de otro cliente este decencripta el mensaje con AES usando la llave pública recibida después de haberla descencriptado con base62
