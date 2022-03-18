@@ -79,11 +79,11 @@ class Connection {
         `Usuario ${this.userId} ha cambiado su nombre de ${oldName} a ${this.userName}`
       );
 
-      this.socket.emit("change:name", {
+      this.socket.broadcast.emit("change:name", {
         oldName,
         newName: this.userName,
       });
-      this.socket.emit("message", {
+      this.socket.broadcast.emit("message", {
         value: `El usuario ${oldName} ha cambiado su nombre a ${data.name}`,
         time: new Date().getTime(),
       });
@@ -123,7 +123,8 @@ class Connection {
 
   disconnect() {
     console.log(`El usuario ${this.userId} se ha desconectado`);
-    this.socket.emit("message", {
+    this.socket.broadcast.emit("user:left", this.userName);
+    this.socket.broadcast.emit("message", {
       vale: `El usuario ${this.userName} se ha desconectado`,
       time: new Date().getTime(),
     });
@@ -139,7 +140,8 @@ function chat(io) {
     const name = con.userName;
     console.log(`Se ha unido ${id} como ${name}`);
     socket.emit("init", { name: name, users: userNames.get() });
-    socket.emit("message", {
+    socket.broadcast.emit("user:joined", name);
+    socket.broadcast.emit("message", {
       value: `Se ha unido ${name}`,
       time: new Date().getTime(),
     });
